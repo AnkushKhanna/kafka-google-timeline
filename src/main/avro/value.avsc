@@ -1,0 +1,25 @@
+{
+   "type": "record",
+       "name":"GoogleHistoryValue",
+       "namespace": "example.googlehistory",
+       "fields":[
+         {"name":"user_id","type":"string"},
+         {
+             "name": "start_time",
+             "type": {
+                 "type": "long",
+                 "logicalType": "timestamp-millis"
+             }
+         },
+         {
+              "name": "end_time",
+              "type": {
+                  "type": "long",
+                  "logicalType": "timestamp-millis"
+              }
+          },
+          {"name":"name","type":"string"},
+          {"name":"latitude","type":"double"},
+          {"name":"longitude","type":"double"}
+       ]
+}

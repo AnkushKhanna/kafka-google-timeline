@@ -1,0 +1,8 @@
+{
+   "type": "record",
+       "name":"GoogleHistoryKey",
+       "namespace": "example.googlehistory",
+       "fields":[
+         {"name":"user_id","type":"string"}
+       ]
+}
