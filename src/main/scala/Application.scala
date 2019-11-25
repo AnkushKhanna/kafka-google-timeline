@@ -21,7 +21,13 @@ object Application extends App {
 
   val kafkaProducer = new KafkaProducer[GoogleHistoryKey, GoogleHistoryValue](prop())
 
-  PushToKafka.push(kafkaProducer, googleTimelineValues)
+  val recordsMetadata = PushToKafka.push(kafkaProducer, googleTimelineValues, config)
+
+  sys.addShutdownHook(() => {
+    println(recordsMetadata.last.offset())
+    println(recordsMetadata.last.timestamp())
+  })
+
 
   def prop() = {
     val properties = new Properties()

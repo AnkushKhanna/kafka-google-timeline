@@ -1,6 +1,6 @@
 package parameters
 
-case class Config(filePath: String = "", kafkaBroker: String = "", schemaRegistryUrl: String = "")
+case class Config(filePath: String = "", kafkaBroker: String = "", schemaRegistryUrl: String = "", topic: String = "")
 
 object Config {
   val parser = new scopt.OptionParser[Config]("scopt") {
@@ -20,5 +20,10 @@ object Config {
       .required()
       .action((x, c) => c.copy(schemaRegistryUrl = x))
       .text("schema registry url")
+
+    opt[String]("topic")
+      .required()
+      .action((x, c) => c.copy(topic = x))
+      .text("Kafka topic to push data to")
   }
 }
